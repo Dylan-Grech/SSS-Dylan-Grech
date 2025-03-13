@@ -33,12 +33,6 @@ class CollegeController extends Controller
         return back()->with('success', 'College Added');
     }
 
-    public function show(string $id)
-    {
-        $college = College::findOrFail($id);
-        return view('colleges.show', compact('college'));
-    }
-
     public function edit(string $id)
     {
         $college = College::findOrFail($id);

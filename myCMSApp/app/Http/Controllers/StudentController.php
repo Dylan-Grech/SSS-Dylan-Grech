@@ -12,18 +12,18 @@ class StudentController extends Controller
     {
         $colleges = College::all();
 
-    $sortBy = $request->get('sort_by', 'name');
-    $sortDirection = $request->get('sort_direction', 'asc');
+        $sortBy = $request->get('sort_by', 'name');
+        $sortDirection = $request->get('sort_direction', 'asc');
 
-    if ($request->has('college_id') && $request->college_id != '') {
-        $students = Student::where('college_id', $request->college_id)
-            ->orderBy($sortBy, $sortDirection)
-            ->get();
-    } else {
-        $students = Student::orderBy($sortBy, $sortDirection)->get();
-    }
+        if ($request->has('college_id') && $request->college_id != '') {
+            $students = Student::where('college_id', $request->college_id)
+                ->orderBy($sortBy, $sortDirection)
+                ->get();
+        } else {
+            $students = Student::orderBy($sortBy, $sortDirection)->get();
+        }
 
-    return view('students.index', compact('students', 'colleges', 'sortBy', 'sortDirection'));
+        return view('students.index', compact('students', 'colleges', 'sortBy', 'sortDirection'));
     }
 
     public function create()
@@ -36,6 +36,7 @@ class StudentController extends Controller
     {
         $customMessages = [
             'email.required' => 'The email field is mandatory.',
+            'email.unique' => 'The email must be unique.',
             'email.email' => 'Please enter a valid email address.',
             'email.regex' => 'The email must end with .com.',
             'phone.required' => 'The phone number field is required.',
@@ -69,14 +70,6 @@ class StudentController extends Controller
         ]);
     
         return back()->with('success', 'Student Added');
-    }
-
-    public function show(string $id)
-    {
-        $student = Student::findOrFail($id);
-        $colleges = College::all();
-
-        return view('students.show', compact('student', 'colleges'));
     }
 
     public function edit(string $id)
