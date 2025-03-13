@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CollegeController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
