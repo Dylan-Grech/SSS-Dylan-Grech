@@ -11,6 +11,9 @@ class College extends Model
 
     protected $fillable = ['name', 'address'];
     
+    /**
+     * Relation established between college and studets. A college can have many students
+     */
     public function students()
     {
         return $this->hasMany(Student::class);

@@ -11,6 +11,9 @@ class Student extends Model
 
     protected $fillable = ['name', 'email', 'phone', 'dob', 'college_id'];
 
+    /**
+     * Relation established between student and college. A student can only be assigned to one college
+     */
     public function college()
     {
         return $this->belongsTo(College::class);

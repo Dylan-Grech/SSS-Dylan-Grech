@@ -8,13 +8,20 @@ use App\Models\College;
 
 class StudentController extends Controller
 {
+    /**
+     * Returns the data of all students in a table
+     */
     public function index(Request $request)
     {
+        //Gets data of all colleges
         $colleges = College::all();
 
+        
         $sortBy = $request->get('sort_by', 'name');
         $sortDirection = $request->get('sort_direction', 'asc');
 
+        //If the suer requests to see students of a specific college and the id is not empty, the orderby function
+        //will return the data according to the sortby (in this case name) and the direction (in this case ascending)
         if ($request->has('college_id') && $request->college_id != '') {
             $students = Student::where('college_id', $request->college_id)
                 ->orderBy($sortBy, $sortDirection)
@@ -26,14 +33,23 @@ class StudentController extends Controller
         return view('students.index', compact('students', 'colleges', 'sortBy', 'sortDirection'));
     }
 
+    /**
+     * Returns the view for creating students. The college data is also added within the view so as to be able
+     * to sort the students to a college
+     */
     public function create()
     {
         $colleges = College::all();
         return view('students.create', compact('colleges'));
     }
 
+    /**
+     * Validates the user's input
+     * If validation is a success, the data is stored and a success message is returned
+     */
     public function store(Request $request)
     {
+        //Custom messages according to the validation error that might arise
         $customMessages = [
             'email.required' => 'The email field is mandatory.',
             'email.unique' => 'The email must be unique.',
@@ -72,6 +88,10 @@ class StudentController extends Controller
         return back()->with('success', 'Student Added');
     }
 
+    /**
+     * Returns the edit view with the data of a specific college
+     * College data is also sent to populate dropdown
+     */
     public function edit(string $id)
     {
         $student = Student::findOrFail($id);
@@ -80,6 +100,10 @@ class StudentController extends Controller
         return view('students.edit', compact('student', 'colleges'));
     }
 
+    /**
+     * Validates the user's input
+     * If validation is a success, the data is stored and a success message is returned
+     */
     public function update(Request $request, string $id)
     {
         $request->validate([
@@ -102,6 +126,10 @@ class StudentController extends Controller
         return back()->with('success', 'Student Updated');
     }
 
+    /**
+     * Deletes user by id
+     * If success, a success message is sent
+     */
     public function delete(string $id)
     {
         $student = Student::findOrFail($id);
