@@ -6,10 +6,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-dark">
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ url('/') }}">Laravel App</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+            <a class="navbar-brand" href="{{ url('/') }}">CMS App</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -17,6 +17,8 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('colleges.index') }}">Colleges</a>
+                    </li>
+                     <li>
                         <a class="nav-link" href="{{ route('students.index') }}">Students</a>
                     </li>
                 </ul>

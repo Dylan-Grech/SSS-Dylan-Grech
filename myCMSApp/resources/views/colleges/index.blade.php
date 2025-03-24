@@ -5,7 +5,7 @@
         <h2>Colleges</h2>
         <a href="{{ route('colleges.create') }}" class="btn btn-primary">Add College</a>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered table-dark">
         <thead>
             <tr>
                 <th>Id</th>

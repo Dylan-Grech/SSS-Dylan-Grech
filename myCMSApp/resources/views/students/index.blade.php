@@ -27,7 +27,7 @@
         </div>
     </form>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-dark">
         <thead>
             <tr>
                 <th>Id</th>

@@ -17,12 +17,12 @@
             </div>
         @endif
 
-        <div class="mb-3">
+        <div class="mb-3 text-light">
             <label for="name" class="form-label">College Name</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 text-light">
             <label for="address" class="form-label">Address</label>
             <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
         </div>

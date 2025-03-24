@@ -14,22 +14,22 @@
         @csrf
         @method('PUT')
 
-        <div class="mb-3">
+        <div class="mb-3 text-light">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ $student->name }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 text-light">
             <label for="email" class="form-label">Email</label>
             <input type="text" class="form-control" id="email" name="email" value="{{ $student->email }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 text-light">
             <label for="phone" class="form-label">Phone</label>
             <input type="text" class="form-control" id="phone" name="phone" value="{{ $student->phone }}" required>
         </div>
 
-        <div class="mb-3">
+        <div class="mb-3 text-light">
             <label for="dob" class="form-label">D.O.B</label>
             <input type="text" class="form-control" id="dob" name="dob" value="{{ $student->dob }}" required>
         </div>
